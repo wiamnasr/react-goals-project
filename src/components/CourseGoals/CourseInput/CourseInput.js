@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 
 import Button from "../../UI/Button/Button";
-// import "./CourseInput.css";
 
-// Style
+// CSS Modules Dynamic Styling
+import styles from "./CourseInput.module.css";
 
-import { FormControlDiv } from "./CourseInput.styles";
+/*
+  // Used with styled-components
+  // Style
 
+  // import { FormControlDiv } from "./CourseInput.styles";
+*/
 const CourseInput = (props) => {
   const [enteredValue, setEnteredValue] = useState("");
   const [isValid, setIsValid] = useState(true);
@@ -29,10 +33,19 @@ const CourseInput = (props) => {
 
   return (
     <form onSubmit={formSubmitHandler}>
+      {/* 
+        Used with styled-components
       <FormControlDiv invalid={!isValid}>
         <label>Course Goal</label>
         <input type='text' onChange={goalInputChangeHandler} />
-      </FormControlDiv>
+      </FormControlDiv> 
+      */}
+      <div
+        className={`${styles["form-control"]} ${!isValid && styles.invalid}`}
+      >
+        <label>Course Goal</label>
+        <input type='text' onChange={goalInputChangeHandler} />
+      </div>
       <Button type='submit'>Add Goal</Button>
     </form>
   );
